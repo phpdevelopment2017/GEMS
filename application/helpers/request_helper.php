@@ -3,9 +3,15 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
+function is_post() {
+    if (!(filter_input(INPUT_SERVER, 'REQUEST_METHOD') === 'POST')) {
+        exit('Invalid Access');
+    }
+}
+
 function check_authenticated() {
     if (!is_authenticated()) {
-        header("Location:" . base_url() . "login");
+        header("Location:" . base_url() . "admin/login");
     }
 }
 
